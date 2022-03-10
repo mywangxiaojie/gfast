@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  gfast_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gfast_server
+    restart: always
+    ports:
+      - "8193:8199"
+    volumes:
+      - ../gfast_server.config.toml:/var/www/server/config.toml
+      - /data/zhxc/log/gfast_server:/var/www/server/logs
+    command: /var/www/server/gfast_server
